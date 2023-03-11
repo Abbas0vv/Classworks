@@ -23,164 +23,150 @@
             string option = Console.ReadLine();
 
 
-            if (option == "Show recent currency rates" || option == "1")
+
+            double[] currenciesPrices = new double[] { 1.7000, 0.0898, 1.8011, 0.0224, 0.2441, 0.6561, 0.0460 };
+            string[] currencies = new string[] { "USD", "TRY", "EUR", "RUB", "CNY", "GEL", "UAH" };
+            int currencyCount = currencies.Length;
+            int idx = 0;
+
+
+
+            while (option == "1" || option == "Show recent currency rates")
             {
-                Console.Write("How many currency do you need : ");
-
-                int currencyCount = int.Parse(Console.ReadLine());
-
-                string[] currencies = new string[] { "USD", "TRY", "EUR", "RUB", "CNY", "GEL", "UAH" };
-                int idx = 0;
-
-                //string alpha3 = Console.ReadLine();
-
-                //Console.Write("USD, ");
-                //Console.Write("TRY, ");
-                //Console.Write("EUR, ");
-                //Console.Write("RUB, ");
-                //Console.Write("CNY, ");
-                //Console.Write("GEL, ");
-                //Console.Write("UAH.");
-                //Console.WriteLine();
-                //Console.WriteLine("Which Currency do you need : ");
-
-                Console.WriteLine("Which currency do you need : ");
-                string whichCurrency = Console.ReadLine();
-
-
-                while (idx < currencyCount)
+                if (option == "Show recent currency rates" || option == "1")
                 {
 
-
-                    if (whichCurrency == "USD")
+                    while (idx < currencyCount)
                     {
-                        double aznToUSD = 1.700;
-                        Console.WriteLine(aznToUSD);
+                        Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
+                        idx++;
                     }
 
-                    else if (whichCurrency == "TRY")
-                    {
-                        double aznToTRY = 0.089;
-                        Console.WriteLine(aznToTRY);
-                    }
+                    idx = 0;
 
-                    else if (whichCurrency == "EUR")
-                    {
-                        double aznToEUR = 1.80;
-                        Console.WriteLine(aznToEUR);
-                    }
+                    Console.WriteLine();
+                    Console.WriteLine("--------------------------------------------------------");
+                    Console.WriteLine();
 
-                    else if (whichCurrency == "RUB")
-                    {
-                        double aznToRUB = 0.02;
-                        Console.WriteLine(aznToRUB);
-                    }
-
-                    else if (whichCurrency == "CNY")
-                    {
-                        double aznToCNY = 0.24;
-                        Console.WriteLine(aznToCNY);
-                    }
-
-                    else if (whichCurrency == "GEL")
-                    {
-                        double aznToGEL = 0.65; 
-                        Console.WriteLine(aznToGEL);
-                    }
-
-                    else if (whichCurrency == "UAH")
-                    {
-                        double aznToUAH = 0.04;
-                        Console.WriteLine(aznToUAH);
-                    }
-
-                    idx++;
                 }
-
-                Console.WriteLine("Enter your currencies(USD, TRY, EUR, ...) : ");
-
-                while (idx < currencyCount)
-                {
-                    currencies[idx] = Console.ReadLine();
-                    idx++;
-                }
-
-                Console.WriteLine();
-                Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine();
-
-                while (idx < currencyCount)
-                {
-                    Console.WriteLine(currencies[idx]);
-                    idx++;
-                }
-
-                Console.WriteLine("--------------------------------------------------------");
                 Console.Write("Which option do you need : ");
                 option = Console.ReadLine();
+                if (option == "2" || option == "Find curreny by code" ||
+                    option == "3" || option == "Calculate amount by currency" ||
+                    option == "4" || option == "Exit")
+                {
+                    break;
+                }
             }
-            else if (option == "Find curreny by code" || option == "2")
-            {
 
-            }
-            else if (option == "Calculate amount by currency" || option == "3")
+            idx = 0;
+            int whileNumber = currencies.Length;
+            string alpha3 = currencies[idx];
+
+            while (option == "2" || option == "Find currency by code")
             {
-                Console.WriteLine("Enter the amount : ");
-                decimal amount = decimal.Parse(Console.ReadLine());
-            }
-            else if (option == "Exit" || option == "4")
-            {
+                Console.Write("Please write you alpha3 code : ");
+                alpha3 = Console.ReadLine();
+
+                if (alpha3 == "USD")
+                {
+                    idx = 0;
+                }
+                else if (alpha3 == "TRY")
+                {
+                    idx = 1;
+                }
+                else if (alpha3 == "EUR")
+                {
+                    idx = 2;
+                }
+                else if (alpha3 == "RUB")
+                {
+                    idx = 3;
+                }
+                else if (alpha3 == "CNY")
+                {
+                    idx = 4;
+                }
+                else if (alpha3 == "GEL")
+                {
+                    idx = 5;
+                }
+                else if (alpha3 == "UAH")
+                {
+                    idx = 6;
+                }
+
+                Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
                 Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------------------------");
+                Console.WriteLine();
+                Console.Write("Which option do you need : ");
+                option = Console.ReadLine();
+                if (option == "2" || option == "Find curreny by code" ||
+                    option == "3" || option == "Calculate amount by currency" ||
+                    option == "4" || option == "Exit")
+                {
+                    break;
+                }
             }
-            else
+
+            idx = 0;
+            while (option == "3" || option == "Calculate amount by currency")
             {
-                Console.WriteLine("Error");
+                Console.Write("Please, first, write your amount : ");
+
+                double amountOfAZN = double.Parse(Console.ReadLine());
+
+
+                Console.Write("Now, write which currency do yo need : ");
+
+                alpha3 = Console.ReadLine();
+
+
+                if (alpha3 == "USD")
+                {
+                    idx = 0;
+                }
+                else if (alpha3 == "TRY")
+                {
+                    idx = 1;
+                }
+                else if (alpha3 == "EUR")
+                {
+                    idx = 2;
+                }
+                else if (alpha3 == "RUB")
+                {
+                    idx = 3;
+                }
+                else if (alpha3 == "CNY")
+                {
+                    idx = 4;
+                }
+                else if (alpha3 == "GEL")
+                {
+                    idx = 5;
+                }
+                else if (alpha3 == "UAH")
+                {
+                    idx = 6;
+                }
+
+
+                Console.WriteLine("AZN to " + currencies[idx] + " = " + amountOfAZN / currenciesPrices[idx] );
+                Console.WriteLine();
+                Console.WriteLine("----------------------------------------------------------------------------");
+                Console.WriteLine();
+                Console.Write("Which option do you need : ");
+                option = Console.ReadLine();
+                if (option == "2" || option == "Find curreny by code" ||
+                    option == "3" || option == "Calculate amount by currency" ||
+                    option == "4" || option == "Exit")
+                {
+                    break;
+                }
             }
-            //**********************************************************************************
-
-            //Console.Write("Number Count : ");
-
-            //int numberCount = int.Parse(Console.ReadLine());
-
-
-            //int[] numbers = new int[numberCount];
-            //int fillIDX = 0;
-
-
-            //Console.WriteLine("Enter you numbers : ");
-
-            //while (fillIDX < numberCount)
-            //{
-            //    int input = int.Parse(Console.ReadLine());
-
-            //    if (input % 2 == 0)
-            //    {
-            //        numbers[fillIDX] = 0;
-            //    }
-            //    else
-            //    {
-            //        numbers[fillIDX] = -1;
-            //    }
-
-            //    fillIDX++;
-            //}
-
-
-            //fillIDX = 0;
-
-
-            //Console.Write("This is your numbers : ");
-            //while (fillIDX < numberCount)
-            //{
-            //    Console.Write(numbers[fillIDX]);
-            //    if (fillIDX < (numberCount - 1))
-            //    {
-            //        Console.Write(", ");
-            //    }
-            //    fillIDX++;
-            //}
-            //Console.WriteLine(".");
-
         }
     }
 }
