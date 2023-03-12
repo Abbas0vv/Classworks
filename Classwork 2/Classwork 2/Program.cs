@@ -136,6 +136,7 @@
                     Console.WriteLine();
                     Console.WriteLine("Program stopped working.");
                     Console.WriteLine();
+                    break;
                 }
             }
         }
