@@ -1,4 +1,4 @@
-﻿namespace Classwork_2
+﻿namespace TestCode
 {
     internal class Program
     {
@@ -29,31 +29,31 @@
 
             Console.WriteLine("--------------------------------------------------------");
 
-
-
             Console.Write("Which option do you need : ");
             string option = Console.ReadLine();
 
-
-            if (option == "Show recent currency rates" || option == "1")
+            while (true)
             {
 
-                while (idx < currencyCount)
+                if (option == "Show recent currency rates" || option == "1")
                 {
-                    Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
-                    idx++;
+
+                    while (idx < currencyCount)
+                    {
+                        Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
+                        idx++;
+                    }
+
+                    idx = 0;
+
+                    Console.WriteLine();
+                    Console.WriteLine("--------------------------------------------------------");
+                    Console.WriteLine();
+
+                    Console.Write("Which option do you need : ");
+                    option = Console.ReadLine();
                 }
-
-                idx = 0;
-
-                Console.WriteLine();
-                Console.WriteLine("--------------------------------------------------------");
-                Console.WriteLine();
-
-                Console.Write("Which option do you need : ");
-                option = Console.ReadLine();
-
-                if (option == "2" || option == "Find curreny by code")
+                else if (option == "2" || option == "Find curreny by code")
                 {
                     idx = 0;
                     number = 0;
@@ -87,6 +87,7 @@
                             number++;
                         }
                     }
+
                     Console.Write("Which option do you need : ");
                     option = Console.ReadLine();
 
@@ -127,6 +128,8 @@
                             number++;
                         }
                     }
+                    Console.Write("Which option do you need : ");
+                    option = Console.ReadLine();
                 }
                 else
                 {
@@ -134,209 +137,6 @@
                     Console.WriteLine("Program stopped working.");
                     Console.WriteLine();
                 }
-            }
-            else if (option == "2" || option == "Find curreny by code")
-            {
-                idx = 0;
-                number = 0;
-                alpha3 = currencies[idx];
-                whileNumber = currencies.Length;
-
-                Console.Write("Please write you alpha3 code : ");
-                alpha3 = Console.ReadLine();
-
-                
-                if (alpha3 != currencies[idx])
-                {
-                    Console.WriteLine("This currency is not available");
-                }
-
-
-                while (currencies.Length > idx)
-                {
-                    if (alpha3 == currencies[idx])
-                    {
-                        idx = number;
-
-                        Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
-                        Console.WriteLine();
-                        Console.WriteLine("----------------------------------------------------------------------------");
-                        Console.WriteLine();
-                        break;
-                    }
-                    else
-                    {
-                        idx++;
-                        number++;
-                    }
-                }
-
-                Console.Write("Which option do you need : ");
-                option = Console.ReadLine();
-
-                if (option == "Show recent currency rates" || option == "1")
-                {
-
-                    while (idx < currencyCount)
-                    {
-                        Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
-                        idx++;
-                    }
-
-                    idx = 0;
-
-                    Console.WriteLine();
-                    Console.WriteLine("--------------------------------------------------------");
-                    Console.WriteLine();
-                }
-                else if (option == "3" || option == "Calculate amount by currency")
-                {
-
-                    idx = 0;
-                    number = 0;
-                    whileNumber = currencies.Length;
-
-                    Console.Write("Please, first, write your amount : ");
-
-                    double amountOfAZN = double.Parse(Console.ReadLine());
-
-
-                    Console.Write("Now, write which currency do yo need : ");
-
-                    alpha3 = Console.ReadLine();
-
-
-
-                    while (currencies.Length > idx)
-                    {
-                        if (alpha3 == currencies[idx])
-                        {
-                            idx = number;
-
-                            Console.WriteLine("AZN to " + currencies[idx] + " = " + amountOfAZN / currenciesPrices[idx]);
-                            Console.WriteLine();
-                            Console.WriteLine("----------------------------------------------------------------------------");
-                            Console.WriteLine();
-                            break;
-                        }
-                        else
-                        {
-                            idx++;
-                            number++;
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Program stopped working.");
-                    Console.WriteLine();
-                }
-            }
-            else if (option == "3" || option == "Calculate amount by currency")
-            {
-
-                idx = 0;
-                number = 0;
-                whileNumber = currencies.Length;
-
-                Console.Write("Please, first, write your amount : ");
-
-                double amountOfAZN = double.Parse(Console.ReadLine());
-
-
-                Console.Write("Now, write which currency do yo need : ");
-
-                alpha3 = Console.ReadLine();
-
-
-
-                while (currencies.Length > idx)
-                {
-                    if (alpha3 == currencies[idx])
-                    {
-                        idx = number;
-
-                        Console.WriteLine("AZN to " + currencies[idx] + " = " + amountOfAZN / currenciesPrices[idx]);
-                        Console.WriteLine();
-                        Console.WriteLine("----------------------------------------------------------------------------");
-                        Console.WriteLine();
-                        break;
-                    }
-                    else
-                    {
-                        idx++;
-                        number++;
-                    }
-                }
-
-                Console.Write("Which option do you need : ");
-                option = Console.ReadLine();
-
-                if (option == "Show recent currency rates" || option == "1")
-                {
-
-                    while (idx < currencyCount)
-                    {
-                        Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
-                        idx++;
-                    }
-
-                    idx = 0;
-
-                    Console.WriteLine();
-                    Console.WriteLine("--------------------------------------------------------");
-                    Console.WriteLine();
-                }
-                else if (option == "2" || option == "Find curreny by code")
-                {
-                    idx = 0;
-                    number = 0;
-                    alpha3 = currencies[idx];
-                    whileNumber = currencies.Length;
-
-                    Console.Write("Please write you alpha3 code : ");
-                    alpha3 = Console.ReadLine();
-
-
-                    if (alpha3 != currencies[idx])
-                    {
-                        Console.WriteLine("This currency is not available");
-                    }
-
-
-                    while (currencies.Length > idx)
-                    {
-                        if (alpha3 == currencies[idx])
-                        {
-                            idx = number;
-
-                            Console.WriteLine("AZN to " + currencies[idx] + " = " + currenciesPrices[idx]);
-                            Console.WriteLine();
-                            Console.WriteLine("----------------------------------------------------------------------------");
-                            Console.WriteLine();
-                            break;
-                        }
-                        else
-                        {
-                            idx++;
-                            number++;
-                        }
-                    }
-
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Program stopped working.");
-                    Console.WriteLine();
-                }
-            }
-            else
-            {
-                Console.WriteLine();
-                Console.WriteLine("Program stopped working.");
-                Console.WriteLine();
             }
         }
     }
