@@ -25,7 +25,7 @@ namespace TestCode
             Console.WriteLine();
 
             //Checking user's surname is correct or not
-            Console.Write("Surname :");
+            Console.Write("Surname : ");
             string surname = Console.ReadLine()!;
             check = CheckSurname(surname);
             do
@@ -65,10 +65,9 @@ namespace TestCode
             {
                 age = int.Parse(Console.ReadLine()!);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine("Write your age correctly!");
-                throw;
+                Console.WriteLine(ex.Message);
             }
 
             check = CheckAge(age);
@@ -77,7 +76,7 @@ namespace TestCode
                 if (check)
                 {
                     Console.WriteLine("Please write your age correctly!");
-                    Console.Write("Age :");
+                    Console.Write("Age : ");
                     age = int.Parse(Console.ReadLine()!);
                     check = CheckAge(age);
                 }
@@ -86,14 +85,14 @@ namespace TestCode
             Console.WriteLine();
 
             //Checking user's FIN code is correct or not
-            Console.Write("FIN code :");
+            Console.Write("FIN code : ");
             string FINcode = Console.ReadLine()!;
             check = CheckFINcode(FINcode);
             do
             {
                 if (check)
                 {
-                    Console.WriteLine("Please write your FIN code correctly!");
+                    Console.WriteLine("Please write your FIN code correctly! (Only upper letters)");
                     Console.Write("FIN code : ");
                     FINcode = Console.ReadLine()!;
                     check = CheckFINcode(FINcode);
@@ -151,6 +150,8 @@ namespace TestCode
 
 
             //If all datas are correct user will see that
+            Console.WriteLine();
+            Console.WriteLine("Sucessfully Completed!");
             Console.WriteLine($"{name} {surname} {fathersName}, Age : {age}, Phone number : {phoneNumber}, Position {position}");
         }
         static bool CheckName(string name)
@@ -183,10 +184,6 @@ namespace TestCode
                     if (name[0] == uppercaseLetters[i])
                     {
                         return check;
-                    }
-                    else
-                    {
-                        return !check;
                     }
                 }
             }
@@ -226,10 +223,6 @@ namespace TestCode
                     if (surname[0] == uppercaseLetters[i])
                     {
                         return check;
-                    }
-                    else
-                    {
-                        return !check;
                     }
                 }
             }
@@ -284,10 +277,6 @@ namespace TestCode
                     {
                         return check;
                     }
-                    else
-                    {
-                        return !check;
-                    }
                 }
             }
             else
@@ -310,18 +299,28 @@ namespace TestCode
         static bool CheckFINcode(string FINcode)
         {
             bool check = true;
-            char[] uppercaseLetters = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                                        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+            char[] lowerLetters = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                                    'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
             if (FINcode.Length == 7)
             {
-                for (int i = 0; i < uppercaseLetters.Length; i++)
+                for (int i = 0; i < FINcode.Length; i++)
                 {
-                    if (FINcode[0] == uppercaseLetters[i])
+                    for (int j = 0; j < lowerLetters.Length; j++)
                     {
-                        check = false;
-                        return check;
+                        if (FINcode[i] == lowerLetters[j])
+                        {
+                            check = true;
+                        }
+                        else
+                        {
+                            check = false;
+                        }
                     }
                 }
+            }
+            else
+            {
+                return check;
             }
             return check;
         }
